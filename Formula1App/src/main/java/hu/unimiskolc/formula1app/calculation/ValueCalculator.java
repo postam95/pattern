@@ -1,13 +1,13 @@
 package hu.unimiskolc.formula1app.calculation;
 
-public interface ValueCalculator {
+public abstract class ValueCalculator {
 	
-	double calculate();
+	abstract public double calculate();
 	
-	double getOneLapValue();
+	abstract protected double getOneLapValue();
 	
-	double getRaceValue();
+	abstract protected double getRaceValue();
 	
-	double getExperienceValue();
+	abstract protected double getExperienceValue();
 	
 }

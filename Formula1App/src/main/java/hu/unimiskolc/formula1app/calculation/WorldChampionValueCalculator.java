@@ -2,7 +2,7 @@ package hu.unimiskolc.formula1app.calculation;
 
 import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
 
-public class WorldChampionValueCalculator implements ValueCalculator {
+public class WorldChampionValueCalculator extends ValueCalculator {
 
 	private DriverDTO driver;
 	
@@ -20,7 +20,7 @@ public class WorldChampionValueCalculator implements ValueCalculator {
 	}
 
 	@Override
-	public double getOneLapValue() {
+	protected double getOneLapValue() {
 		if (driver.getPoles() > 90.0)
 			return 1.0;
 		else
@@ -28,7 +28,7 @@ public class WorldChampionValueCalculator implements ValueCalculator {
 	}
 
 	@Override
-	public double getRaceValue() {
+	protected double getRaceValue() {
 		double raceValue = 0.0;
 		
 		if (driver.getWins() > 90)
@@ -50,14 +50,14 @@ public class WorldChampionValueCalculator implements ValueCalculator {
 	}
 
 	@Override
-	public double getExperienceValue() {
+	protected double getExperienceValue() {
 		if (driver.getRaces() > 300)
 			return 1.0;
 		else
 			return driver.getRaces() / 300.0;
 	}
 	
-	public double getChampionValue() {
+	private double getChampionValue() {
 		if (driver.getChampionships() > 5)
 			return 1.3;
 		else if (driver.getChampionships() > 2)

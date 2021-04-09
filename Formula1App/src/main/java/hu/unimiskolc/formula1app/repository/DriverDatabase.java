@@ -7,8 +7,10 @@ import java.util.List;
 import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
 
 public class DriverDatabase {
+	
 	private static DriverDatabase instance = null;
 	private List<DriverDTO> drivers;
+	
 	private Long nextId = 11L;
 	
 	private DriverDatabase()	{
