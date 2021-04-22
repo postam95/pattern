@@ -18,20 +18,16 @@ public class Formula1ServiceImpl implements Formula1Service {
 	
 	@Override
 	public List<DriverDTO> getDrivers(String name, Pageable pageable) {
-		
-		if (StringUtils.isEmpty(name)) {
+		if (StringUtils.isEmpty(name))	{
 			return DriverDatabase.getIstance().getAll()
 					.stream()
 					.skip(pageable.getOffset())
 					.limit(pageable.getPageSize())
-					.collect(Collectors.toList());
-		} else {
-			return DriverDatabase.getIstance().getAll()
-					.stream()
-					.filter(a -> a.getName().equals(name))
-					.collect(Collectors.toList());
+					.collect(Collectors.toList());	
+		} else	{
+			return DriverDatabase.getIstance().findByName(name);
 		}
-		
+
 	}
 
 	@Override
@@ -41,19 +37,36 @@ public class Formula1ServiceImpl implements Formula1Service {
 				newDriver.getRaces(), newDriver.getPodiums());
 		
 		boolean result = DriverDatabase.getIstance().create(driver);
+		
 		if (result)
 			return driver;
+		
 		return null;
 	}
 
 	@Override
-	public Double calculateDriver(String name) {
-		DriverDTO driver = DriverDatabase.getIstance().getAll().stream()
-				  .filter(d -> name.equals(d.getName()))
-				  .findAny()
-				  .orElse(null);
+	public Double calculateDriver(Long id) {
+		DriverDTO driver = DriverDatabase.getIstance().findById(id);
 		
 		return driver.calculateValue();
+	}
+
+	@Override
+	public DriverDTO getDriverById(Long id) {
+		return DriverDatabase.getIstance().findById(id);
+	}
+
+	@Override
+	public DriverDTO updateDriver(Long id, NewDriverDTO newDriver) {
+		DriverDTO driver = new DriverDTO(id, null, null, newDriver.getName(),
+				newDriver.getChampionships(), newDriver.getWins(), newDriver.getPoles(), newDriver.getFastestLaps(),
+				newDriver.getRaces(), newDriver.getPodiums());
+		return DriverDatabase.getIstance().update(driver);
+	}
+
+	@Override
+	public void deleteDriver(Long id) {
+		DriverDatabase.getIstance().delete(id);
 	}
 
 }

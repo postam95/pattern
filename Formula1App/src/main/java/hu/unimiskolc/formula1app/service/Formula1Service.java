@@ -13,5 +13,12 @@ public interface Formula1Service {
 
 	DriverDTO createDriver(NewDriverDTO newDriver);
 	
-	Double calculateDriver(String name);
+	Double calculateDriver(Long id);
+	
+	DriverDTO getDriverById(Long id);
+	
+	DriverDTO updateDriver(Long id, NewDriverDTO newDriver);
+	
+	void deleteDriver(Long id);
+	
 }

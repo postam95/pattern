@@ -24,7 +24,7 @@ public class NewDriverDTO {
 		super();
 	}
 
-	public NewDriverDTO(@NotEmpty String name, Integer championships, Integer wins, Integer poles,
+	public NewDriverDTO(String name, Integer championships, Integer wins, Integer poles,
 			Integer fastestLaps, Integer races, Integer podiums) {
 		super();
 		this.name = name;

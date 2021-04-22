@@ -3,6 +3,7 @@ package hu.unimiskolc.formula1app.repository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import hu.unimiskolc.formula1app.model.DriverDTO;
 
@@ -42,6 +43,39 @@ public class DriverDatabase {
 	public boolean create(DriverDTO newDriver)	{
 		newDriver.setId(nextId++);
 		return drivers.add(newDriver);
+	}
+	
+	public DriverDTO findById(Long id)	{
+		DriverDTO driver = DriverDatabase.getIstance().getAll().stream()
+				  .filter(d -> id.equals(d.getId()))
+				  .findAny()
+				  .orElse(null);
+		return driver;
+	}
+	
+	public List<DriverDTO> findByName(String name)	{
+		return DriverDatabase.getIstance().getAll()
+				.stream()
+				.filter(d -> name.equals(d.getName()))
+				.collect(Collectors.toList());
+	}
+	
+	public DriverDTO update(DriverDTO driver)	{
+		DriverDTO updatedDriver = DriverDatabase.getIstance().findById(driver.getId());
+		updatedDriver.setChampionships(driver.getChampionships());
+		updatedDriver.setFastestLaps(driver.getFastestLaps());
+		updatedDriver.setModifiedAt(LocalDateTime.now());
+		updatedDriver.setName(driver.getName());
+		updatedDriver.setPodiums(driver.getPodiums());
+		updatedDriver.setPoles(driver.getPoles());
+		updatedDriver.setRaces(driver.getRaces());
+		updatedDriver.setWins(driver.getWins());
+		return updatedDriver;
+	}
+	
+	public void delete(Long id)	{
+		DriverDTO deletedDriver = DriverDatabase.getIstance().findById(id);
+		DriverDatabase.getIstance().drivers.remove(deletedDriver);
 	}
 	
 }
