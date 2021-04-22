@@ -1,32 +1,30 @@
-package hu.unimiskolc.formula1app.web.dto.driver;
+package hu.unimiskolc.formula1app.model;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
-public class NewDriverDTO {
+import hu.unimiskolc.formula1app.service.calculation.DriverValueCalculator;
+import hu.unimiskolc.formula1app.service.calculation.ValueCalculator;
+import hu.unimiskolc.formula1app.service.calculation.WorldChampionValueCalculator;
 
-	@NotEmpty
+public class DriverDTO extends BaseEntityDTO {
+
 	private String name;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer championships;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer wins;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer poles;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer fastestLaps;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer races;
-	@DecimalMin(value = "0", message = "The value has to be positive or zero")
 	private Integer podiums;
+	private ValueCalculator valueCalculator;
 	
-	public NewDriverDTO() {
+	public DriverDTO() {
 		super();
 	}
 
-	public NewDriverDTO(@NotEmpty String name, Integer championships, Integer wins, Integer poles,
-			Integer fastestLaps, Integer races, Integer podiums) {
-		super();
+	public DriverDTO(Long id, LocalDateTime createdAt, LocalDateTime modifiedAt, String name,
+			Integer championships, Integer wins, Integer poles, Integer fastestLaps,
+			Integer races, Integer podiums) {
+		super(id, createdAt, modifiedAt);
 		this.name = name;
 		this.championships = championships;
 		this.wins = wins;
@@ -34,6 +32,7 @@ public class NewDriverDTO {
 		this.fastestLaps = fastestLaps;
 		this.races = races;
 		this.podiums = podiums;
+		this.setValueCalculator();
 	}
 
 	public String getName() {
@@ -90,6 +89,17 @@ public class NewDriverDTO {
 
 	public void setPodiums(Integer podiums) {
 		this.podiums = podiums;
+	}
+	
+	private void setValueCalculator()	{
+		if (championships != 0)
+			this. valueCalculator = new WorldChampionValueCalculator(this);
+		else
+			this.valueCalculator = new DriverValueCalculator(this);
+	}
+	
+	public double calculateValue()	{
+		return this.valueCalculator.calculate();
 	}
 	
 }

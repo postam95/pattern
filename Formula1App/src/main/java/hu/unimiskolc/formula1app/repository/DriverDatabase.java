@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
+import hu.unimiskolc.formula1app.model.DriverDTO;
 
 public class DriverDatabase {
 	

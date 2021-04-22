@@ -1,4 +1,4 @@
-package hu.unimiskolc.formula1app.web.dto;
+package hu.unimiskolc.formula1app.model;
 
 import java.time.LocalDateTime;
 

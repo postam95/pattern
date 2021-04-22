@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
-import hu.unimiskolc.formula1app.web.dto.driver.NewDriverDTO;
+import hu.unimiskolc.formula1app.model.DriverDTO;
+import hu.unimiskolc.formula1app.model.NewDriverDTO;
 
 public interface Formula1Service {
 

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hu.unimiskolc.formula1app.model.DriverDTO;
+import hu.unimiskolc.formula1app.model.NewDriverDTO;
 import hu.unimiskolc.formula1app.service.Formula1Service;
-import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
-import hu.unimiskolc.formula1app.web.dto.driver.NewDriverDTO;
 
 @RestController
 @RequestMapping("/api/v1/drivers")

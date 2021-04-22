@@ -1,6 +1,6 @@
 package hu.unimiskolc.formula1app.service.calculation;
 
-import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
+import hu.unimiskolc.formula1app.model.DriverDTO;
 
 public class DriverValueCalculator extends ValueCalculator {
 	

@@ -9,9 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import hu.unimiskolc.formula1app.model.DriverDTO;
+import hu.unimiskolc.formula1app.model.NewDriverDTO;
 import hu.unimiskolc.formula1app.repository.DriverDatabase;
-import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
-import hu.unimiskolc.formula1app.web.dto.driver.NewDriverDTO;
 
 @Service
 public class Formula1ServiceImpl implements Formula1Service {
