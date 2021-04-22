@@ -1,4 +1,4 @@
-package hu.unimiskolc.formula1app.calculation;
+package hu.unimiskolc.formula1app.service.calculation;
 
 import hu.unimiskolc.formula1app.web.dto.driver.DriverDTO;
 

@@ -1,4 +1,4 @@
-package hu.unimiskolc.formula1app.calculation;
+package hu.unimiskolc.formula1app.service.calculation;
 
 public abstract class ValueCalculator {
 	

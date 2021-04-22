@@ -2,9 +2,9 @@ package hu.unimiskolc.formula1app.web.dto.driver;
 
 import java.time.LocalDateTime;
 
-import hu.unimiskolc.formula1app.calculation.DriverValueCalculator;
-import hu.unimiskolc.formula1app.calculation.ValueCalculator;
-import hu.unimiskolc.formula1app.calculation.WorldChampionValueCalculator;
+import hu.unimiskolc.formula1app.service.calculation.DriverValueCalculator;
+import hu.unimiskolc.formula1app.service.calculation.ValueCalculator;
+import hu.unimiskolc.formula1app.service.calculation.WorldChampionValueCalculator;
 import hu.unimiskolc.formula1app.web.dto.BaseEntityDTO;
 
 public class DriverDTO extends BaseEntityDTO {
