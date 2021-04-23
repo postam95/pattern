@@ -40,11 +40,6 @@ public class DriverDatabase {
 		return drivers;
 	}
 	
-	public boolean create(DriverDTO newDriver)	{
-		newDriver.setId(nextId++);
-		return drivers.add(newDriver);
-	}
-	
 	public DriverDTO findById(Long id)	{
 		DriverDTO driver = DriverDatabase.getIstance().getAll().stream()
 				  .filter(d -> id.equals(d.getId()))
@@ -58,6 +53,11 @@ public class DriverDatabase {
 				.stream()
 				.filter(d -> name.equals(d.getName()))
 				.collect(Collectors.toList());
+	}
+	
+	public boolean create(DriverDTO newDriver)	{
+		newDriver.setId(nextId++);
+		return drivers.add(newDriver);
 	}
 	
 	public DriverDTO update(DriverDTO driver)	{

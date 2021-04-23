@@ -93,7 +93,7 @@ public class DriverDTO extends BaseEntityDTO {
 	
 	private void setValueCalculator()	{
 		if (championships != 0)
-			this. valueCalculator = new WorldChampionValueCalculator(this);
+			this.valueCalculator = new WorldChampionValueCalculator(this);
 		else
 			this.valueCalculator = new DriverValueCalculator(this);
 	}
